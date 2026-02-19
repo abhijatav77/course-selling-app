@@ -36,10 +36,9 @@ const Home = () => {
                 withCredentials: true
             })
             toast.success(response?.data?.message)
-            localStorage.clear();
-             window.location.href = "/login";
+            localStorage.removeItem("user");
             navigate("/login")
-            setIsLoggedIn(false)
+            setIsLoggedIn(false)            
         } catch (error) {
             console.log("Error in logging out ",error)
             toast.error(error?.response?.data?.errors || "Error in logging out")

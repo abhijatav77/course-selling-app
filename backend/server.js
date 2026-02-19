@@ -26,7 +26,10 @@ app.use(fileUpload({
 
 
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
+    origin: [
+        "http://localhost:5173",
+        "https://course-selling-app-inky.vercel.app"
+    ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"]
@@ -45,7 +48,7 @@ app.use('/api/v1/order', orderRoute);
 cloudinary.config({
     cloud_name: process.env.cloud_name,
     api_key: process.env.api_key,
-    api_secret: process.env.api_secret 
+    api_secret: process.env.api_secret
 });
 
 main()
