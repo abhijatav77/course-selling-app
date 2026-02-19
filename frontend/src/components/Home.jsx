@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import logo from '../assets/logo.webp'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
@@ -17,6 +17,7 @@ const Home = () => {
     const [courses, setCourses] = useState([]);
     const [isLoggedIn, setIsLoggedIn] = useState(false)
 
+    const navigate = useNavigate()
     
     //token
     useEffect(()=>{
@@ -36,9 +37,8 @@ const Home = () => {
             })
             toast.success(response?.data?.message)
             localStorage.removeItem("user");
-            window.location.href = "/login"; // forcefully refresh
+            navigate("/login")
             setIsLoggedIn(false)
-            
         } catch (error) {
             console.log("Error in logging out ",error)
             toast.error(error?.response?.data?.errors || "Error in logging out")

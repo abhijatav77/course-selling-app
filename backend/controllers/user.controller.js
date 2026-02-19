@@ -77,7 +77,7 @@ export const login = async (req, res) => {
             expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
             httpOnly: true,
             secure: process.env.NODE_ENV == 'production',
-            sameSite: "Strict"
+            sameSite: "None"
         }
         res.cookie("token", token, cookieOptions)
          
@@ -96,11 +96,11 @@ export const login = async (req, res) => {
 
 export const logout = async (req, res) => {
     try {
-        // res.cookie("token", "", {httpOnly: true, expires: new Date(0)})
-        if(!req.cookies.token){
-            return res.status(400).json({errors: 'Kindly login first'})
-        }
-        res.clearCookie('token')
+        res.cookie("token", "", {httpOnly: true, expires: new Date(0)})
+        // if(!req.cookies.token){
+        //     return res.status(400).json({errors: 'Kindly login first'})
+        // }
+        // res.clearCookie('token')
         res.status(200).json({
             message: 'Logged out successfully'
         })

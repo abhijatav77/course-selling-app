@@ -16,8 +16,8 @@ import UpdateCourse from './admin/UpdateCourse.jsx'
 import OurCourse from './admin/OurCourse.jsx'
 const App = () => {
 
-  const user = JSON.parse(localStorage.getItem("user"))
-  const admin = JSON.parse(localStorage.getItem("admin"))
+  const user = localStorage.getItem("user")
+  const admin = localStorage.getItem("admin")
 
   return (
     <div>
