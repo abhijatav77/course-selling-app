@@ -36,7 +36,8 @@ const Home = () => {
                 withCredentials: true
             })
             toast.success(response?.data?.message)
-            localStorage.removeItem("user");
+            localStorage.clear();
+             window.location.href = "/login";
             navigate("/login")
             setIsLoggedIn(false)
         } catch (error) {
