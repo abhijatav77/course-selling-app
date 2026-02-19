@@ -17,6 +17,7 @@ const Home = () => {
     const [courses, setCourses] = useState([]);
     const [isLoggedIn, setIsLoggedIn] = useState(false)
 
+    
     //token
     useEffect(()=>{
         const token = localStorage.getItem("user");
@@ -35,6 +36,7 @@ const Home = () => {
             })
             toast.success(response?.data?.message)
             localStorage.removeItem("user");
+            window.location.href = "/login"; // forcefully refresh
             setIsLoggedIn(false)
             
         } catch (error) {
