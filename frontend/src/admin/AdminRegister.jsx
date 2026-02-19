@@ -3,6 +3,7 @@ import logo from '../assets/logo.webp'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import toast from 'react-hot-toast'
+import { BACKEND_URL } from '../utils/utils'
 
 const AdminRegister = () => {
   const [firstName, setFirstName] = useState("")
@@ -16,7 +17,7 @@ const AdminRegister = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3000/api/v1/admin/register", {
+      const response = await axios.post(`${BACKEND_URL}/admin/register`, {
         firstName,
         lastName,
         emailId,
